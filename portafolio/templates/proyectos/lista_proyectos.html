@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,31 +12,38 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
-            border-radius: 50%; /* Hace que la imagen sea redonda */
+            border-radius: 50%;
+            /* Hace que la imagen sea redonda */
             margin-bottom: 15px;
         }
+
         /* Ajustes para la sección Acerca de mí */
         .acerca-de-mi {
             display: flex;
             justify-content: space-between;
-            gap: 20px; /* Espaciado entre los párrafos */
+            gap: 20px;
+            /* Espaciado entre los párrafos */
         }
+
         .acerca-de-mi p {
-            flex: 1; /* Asegura que todos los párrafos ocupen el mismo espacio */
+            flex: 1;
+            /* Asegura que todos los párrafos ocupen el mismo espacio */
             text-align: justify;
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="bg-dark text-white text-center py-5">
         <div class="container">
             <h1>Cristopher Cortinez</h1>
             <!-- Imagen de perfil -->
-            <img src="{% static 'images/perfil.png' %}" alt="Imagen de Perfil" class="profile-img">
+            <img src="{% static 'images/perfil.png' %}" alt="Imagen de Perfil" class="profile-img img-fluid rounded-circle mx-auto d-block s-5">
             <p class="lead">Desarrollador Web y Apasionado por la Tecnología</p>
             <div class="d-flex justify-content-center">
-                <a href="https://www.linkedin.com/in/cristopher-cortinez-02118225b/" class="btn btn-outline-light me-2">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/cristopher-cortinez-02118225b/"
+                    class="btn btn-outline-light me-2">LinkedIn</a>
                 <a href="https://github.com/Ccortinez02" class="btn btn-outline-light me-2">GitHub</a>
                 <a href="https://www.twitter.com" class="btn btn-outline-light">Twitter</a>
             </div>
@@ -44,52 +52,88 @@
     </header>
 
     <!-- Sección Acerca de mí -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4">Acerca de Mí</h2>
-        <div class="acerca-de-mi">
-            <p>Desarrollador Full Stack con más de 2 años de experiencia en la creación y optimización de soluciones tecnológicas para la industria de e-commerce y servicios financieros. Mi especialidad radica en el desarrollo de aplicaciones web utilizando tecnologías como PHP, Java, JavaScript, React.js, MySQL y Python, además de un sólido manejo en arquitecturas de microservicios y automatización de procesos mediante DevOps.</p>
-            <p>He trabajado en proyectos enfocados en la optimización de procesos y la implementación de API RESTful y AJAX, asegurando siempre la calidad del código con pruebas unitarias y metodologías ágiles. Mis conocimientos en Git, Jenkins y plataformas de integración continua me permiten mantener un flujo de trabajo eficiente y escalable.</p>
-            <p>Mi enfoque es siempre buscar soluciones innovadoras, manteniendo una comunicación clara y efectiva con los equipos de desarrollo y líderes de negocio. Estoy en constante aprendizaje, explorando nuevas tecnologías como Docker, Angular, y Sass para seguir evolucionando como profesional.</p>
+<section class="container my-5">
+    <h2 class="text-center mb-4">Acerca de Mí</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <!-- Puedes agregar una imagen aquí si lo deseas -->
+            <img src="{% static 'images/acercademi.jpg' %}" class="img-fluid rounded-circle mx-auto d-block s-5" alt="Imagen de perfil">
         </div>
-    </section>
+        <div class="col-md-8">
+            <p class="lead text-justify">
+                Desarrollador Full Stack con más de 2 años de experiencia en la creación y optimización de soluciones
+                tecnológicas para la industria de e-commerce y servicios financieros. Mi especialidad radica en el
+                desarrollo de aplicaciones web utilizando tecnologías como PHP, Java, JavaScript, React.js, MySQL y
+                Python, además de un sólido manejo en arquitecturas de microservicios y automatización de procesos
+                mediante DevOps.
+            </p>
+            <p class=" lead text-justify">
+                He trabajado en proyectos enfocados en la optimización de procesos y la implementación de API RESTful y
+                AJAX, asegurando siempre la calidad del código con pruebas unitarias y metodologías ágiles. Mis
+                conocimientos en Git, Jenkins y plataformas de integración continua me permiten mantener un flujo de
+                trabajo eficiente y escalable.
+            </p>
+            <p class=" lead text-justify">
+                Mi enfoque es siempre buscar soluciones innovadoras, manteniendo una comunicación clara y efectiva con
+                los equipos de desarrollo y líderes de negocio. Estoy en constante aprendizaje, explorando nuevas
+                tecnologías como Docker, Angular, y Sass para seguir evolucionando como profesional.
+            </p>
+        </div>
+    </div>
+</section>
 
     <!-- Sección de proyectos -->
     <section id="proyectos" class="container mt-5">
         <h2 class="text-center mb-4">Mis Proyectos</h2>
         <div class="row">
             {% for proyecto in proyectos %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="Imagen del proyecto">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ proyecto.titulo }}</h5>
-                            <p class="card-text">{{ proyecto.descripcion }}</p>
-                            {% if proyecto.url %}
-                                <a href="{{ proyecto.url }}" class="btn btn-primary">Ver más</a>
-                            {% endif %}
-                        </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="Imagen del proyecto">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                        <p class="card-text">{{ proyecto.descripcion }}</p>
+                        {% if proyecto.url %}
+                        <a href="{{ proyecto.url }}" class="btn btn-primary">Ver más</a>
+                        {% endif %}
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </section>
     <footer class="bg-dark text-white text-center">
-        <section id="footer-info">
+        <section id="footer-info" class="d-flex justify-content-around">
             <div class="contact-me">
-                <p>Contactame</p>
+                <h2>Contactame</h2> <br>
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email"
+                            placeholder="Introduce tu correo electrónico">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="proposal" rows="4"
+                            placeholder="Describe tu propuesta aquí"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
             <div class="divider"></div>
             <div class="social-media">
-                <p>Mis Redes</p>
-                <a href="">LinkedIn</a>
-                <a href="">GitHub</a>
-                <a href="">Instagram</a>
+                <p class="h4">Mis Redes</p> <br>
+                <div class="d-flex flex-column">
+                    <a href="" class="mb-2"><i class="fa-brands fa-linkedin fs-3 text-white hover:text-danger"></i></a>
+                    <a href="" class="mb-2"><i class="fa-brands fa-square-github fs-3 text-white"></i></a>
+                    <a href="" class="mb-2"><i class="fa-brands fa-instagram fs-3 text-white"></i></a>
+                </div>
             </div>
         </section>
-        <div >Cristopher Cortinez | Desarrollador Web</div>
+        <div>Cristopher Cortinez | Desarrollador Web</div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/192ba4ed31.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
