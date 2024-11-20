@@ -66,15 +66,13 @@ WSGI_APPLICATION = 'portafolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portafolio',
+        'NAME': 'cristophercortinez$portafolio',
         'USER': 'root',
         'PASSWORD': '2587',
-        'HOST': 'localhost',
-        'PORT': '3307',
-
+        'HOST': 'cristophercortinez.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
